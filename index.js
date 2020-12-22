@@ -9,7 +9,7 @@ const queue = new Map();
 const{ executionAsyncResource } = require('async_hooks');
 const{ YTSearcher } = require('ytsearcher');
 const searcher = new YTSearcher({
-    key: 'AIzaSyApxhGytwdUVzNrxIYbzC-MkdidixM1fnU',
+    key: process.env.youtube_api,
     revealed: true
 });
 
@@ -174,5 +174,5 @@ bot.on('message', async message => {
 }) 
 
 
-bot.login(tokene;
+bot.login(process.env.token);
  

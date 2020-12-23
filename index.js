@@ -70,6 +70,14 @@ bot.on('message', async message => {
             resume(serverQueue);
             break;
 
+         case 'loop':
+            loop(args, serverQueue);
+            break;
+
+         case 'queue':
+            queue(serverQueue);
+            break;
+
      /* displays commands */
         
 
@@ -99,7 +107,9 @@ bot.on('message', async message => {
                     connection: null,
                     songs: [],
                     volume: 10,
-                    playing: true
+                    playing: true,
+                    loopone: false,
+                    loopall: false
                 };
                 queue.set(message.guild.id, queueConstructor);
 
@@ -132,7 +142,16 @@ bot.on('message', async message => {
         const dispatcher = serverQueue.connection
             .play(ytdl(song.url))
             .on('finish', () => {
-                serverQueue.songs.shift();
+                if(serverQueue.loopone){
+                    play(guild, serverQueue.songs[0]);
+                }
+                else if(serverQueueserverQueue.loopall){
+                    serverQueue.songs.push(serverQueue.songs[0]);
+                    serverQUeue.songs.shift();
+                }
+                else{
+                    serverQueue.songs.shift();
+                }
                 play(guild, serverQueue.songs[0]);
             })
             serverQueue.txtChannel.send(`Now playing ${serverQueue.songs[0].url}`)  
@@ -169,6 +188,61 @@ bot.on('message', async message => {
         serverQueue.connection.dispatcher.resume();
         message.channel.send("The current song has been resumed");
         console.log(`${count++}. ${message.author.username} has requested the bot to resume the current song: ${serverQueue.songs[0]}`)
+    }
+
+    function loop(args, serverQueue){
+        if(!message.member.voice.channel) return message.channel.send("You need to join the voice chat to activate this command");
+        if(!serverQueue.connection) return message.channel.send("There is no music to loop!");
+        switch (args[o],toLowerCase()){
+            case 'all':
+                serverQueue.loopall = !serverQueue.loopall;
+                serverQueue.loopone = false;
+
+                if(serverQueue.loopall === true){
+                    message.channel.send("All songs in queue are now looped!"); 
+                }
+                else{
+                    message.channel.send("Loop all has been turned off");
+                }
+                break;
+            case 'one':
+                serverQueue.loopone = !serverQueue.loopone;
+                serverQueue.loopall = false;
+
+                if(serverQueue.loopone === true){
+                    message.channel.send("Current song is now looped!");
+                }
+                else{
+                    message.channel.send("Loop one has been turned off");
+                }
+                break;
+            case 'off':
+                serverQueue.loopone = false;
+                serverQueue.loopall = false;
+
+                message.channel.send("Turning off loop...");
+                break;
+            default:
+                meesage.channel.send("Please specify what you want to loop: !loop <all/off/one> ");
+                break;
+        }
+
+    }
+
+    function queue(serverQueue){
+
+        if(!message.member.voice.channel) return message.channel.send("You need to join the voice chat to activate this command");
+        if(!serverQueue.connection) return message.channel.send("There is no music to queue!");
+
+        let nowPlaying = serverQueue.songs[0];
+        let qMsg = `Now playing: ${nowPlaying.title}\n----------------- { QUEUE } ---------------\n`; 
+
+        for (var i = 0; i < serverQueue.songs.length; i++){
+            qMsg += `${i}. ${serverQueue.songs[i].title}\n`;
+        }
+
+        message.channel.send('```' + qMsg + 'Requested by: ' + message.author.username + '```');
+
     }
 
 }) 

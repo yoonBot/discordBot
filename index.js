@@ -130,7 +130,7 @@ bot.on('message', async message => {
                 return message.channel.send(`The song has been added to queue ${song.url}`);
             }
         }
-    }
+    }       
 
     function play(guild, song){
         const serverQueue = queue.get(guild.id);
@@ -145,7 +145,7 @@ bot.on('message', async message => {
                 if(serverQueue.loopone){
                     play(guild, serverQueue.songs[0]);
                 }
-                else if(serverQueueserverQueue.loopall){
+                else if(serverQueue.loopall){
                     serverQueue.songs.push(serverQueue.songs[0]);
                     serverQUeue.songs.shift();
                 }
@@ -205,6 +205,7 @@ bot.on('message', async message => {
                     message.channel.send("Loop all has been turned off");
                 }
                 break;
+
             case 'one':
                 serverQueue.loopone = !serverQueue.loopone;
                 serverQueue.loopall = false;
@@ -216,15 +217,17 @@ bot.on('message', async message => {
                     message.channel.send("Loop one has been turned off");
                 }
                 break;
+
             case 'off':
                 serverQueue.loopone = false;
                 serverQueue.loopall = false;
 
                 message.channel.send("Turning off loop...");
                 break;
+
             default:
                 meesage.channel.send("Please specify what you want to loop: !loop <all/off/one> ");
-                break;
+                
         }
 
     }
@@ -237,7 +240,7 @@ bot.on('message', async message => {
         let nowPlaying = serverQueue.songs[0];
         let qMsg = `Now playing: ${nowPlaying.title}\n----------------- { QUEUE } ---------------\n`; 
 
-        for (var i = 0; i < serverQueue.songs.length; i++){
+        for (var i = 1; i < serverQueue.songs.length; i++){
             qMsg += `${i}. ${serverQueue.songs[i].title}\n`;
         }
 
@@ -249,4 +252,4 @@ bot.on('message', async message => {
 
 
 bot.login(process.env.token);
- 
+    

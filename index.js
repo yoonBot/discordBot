@@ -75,7 +75,7 @@ bot.on('message', async message => {
             break;
 
          case 'queue':
-            queue(serverQueue);
+            Queue(serverQueue);
             break;
 
      /* displays commands */
@@ -147,7 +147,7 @@ bot.on('message', async message => {
                 }
                 else if(serverQueue.loopall){
                     serverQueue.songs.push(serverQueue.songs[0]);
-                    serverQUeue.songs.shift();
+                    serverQueue.songs.shift();
                 }
                 else{
                     serverQueue.songs.shift();
@@ -193,7 +193,8 @@ bot.on('message', async message => {
     function loop(args, serverQueue){
         if(!message.member.voice.channel) return message.channel.send("You need to join the voice chat to activate this command");
         if(!serverQueue.connection) return message.channel.send("There is no music to loop!");
-        switch (args[o],toLowerCase()){
+        const command = args.shift().toLowerCase();
+	switch (command){
             case 'all':
                 serverQueue.loopall = !serverQueue.loopall;
                 serverQueue.loopone = false;
@@ -232,7 +233,7 @@ bot.on('message', async message => {
 
     }
 
-    function queue(serverQueue){
+    function Queue(serverQueue){
 
         if(!message.member.voice.channel) return message.channel.send("You need to join the voice chat to activate this command");
         if(!serverQueue.connection) return message.channel.send("There is no music to queue!");

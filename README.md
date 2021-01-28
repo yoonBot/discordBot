@@ -1,25 +1,23 @@
-# <center>yoonBot Discord Bot
+# <h1 align='center'> yoonBot Discord Bot :robot:
 
 ![yoonbot](https://user-images.githubusercontent.com/73013239/102876169-30ce4e80-4488-11eb-94ea-b80c5c188d04.PNG)
 
-NOTE: <ol> 
-<li>This is a personal project to learn about creating nlp units and the javascript programming and other node js packages.</li>
-<li>In addition, instead of using other people's bots, such as groovy, fredboat, and ayana, I wanted to create and use my own bot.</li>
-<li>It is not meant to be a professional project.</li>
-<li>More features will be updated.</li>
-<li>The bot is tested on the 3 most basic operating system platforms:<ol>
-<li>MacOS</li>
-<li>Windows</li>
-<li>Linux</li>
-</ol>
-</li>  
-</ol>  
+### `NOTE:` 
+#### 1. This is a personal project to learn about creating nlp units and the javascript programming and other node js packages.
+#### 2. In addition, instead of using other people's bots, such as groovy, fredboat, and ayana, I wanted to create and use my own bot.
+#### 3. It is not meant to be a professional project.
+#### 4. More features will be updated.
+#### 5. This bot is active online for 24/7 at heroku.
+#### 6. The bot is tested on the 3 most basic operating system platforms:
+##### 1. MacOS
+##### 2. Windows
+##### 3. Linux  
 
-### To add the Bot to your discord server, please enter the link below.
+## To add the Bot to your discord server, please enter the link below.
 
 [yoonBot Server](https://discord.com/oauth2/authorize?client_id=764223333973098529&scope=bot&permissions=1815609065)
 
-### <center>FULL COMMANDS LIST
+### <h19 algin='center'> FULL COMMANDS LIST
 
 | Music Command | Intended Operations |
 |---------|---------|

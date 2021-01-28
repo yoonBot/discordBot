@@ -17,7 +17,7 @@
 
 [yoonBot Server](https://discord.com/oauth2/authorize?client_id=764223333973098529&scope=bot&permissions=1815609065)
 
-### <h19 align='center'> FULL COMMANDS LIST
+### <h2 align='center'> FULL COMMANDS LIST
 
 | Music Command | Intended Operations |
 |---------|---------|

@@ -9,9 +9,9 @@
 #### 4. More features will be updated.
 #### 5. This bot is active online for 24/7 at heroku.
 #### 6. The bot is tested on the 3 most basic operating system platforms:
-##### 1. MacOS
-##### 2. Windows
-##### 3. Linux  
+##### a. MacOS
+##### b. Windows
+##### c. Linux  
 
 ## To add the Bot to your discord server, please enter the link below.
 
